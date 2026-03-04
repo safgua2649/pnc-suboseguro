@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PNC Guatemala - Sistema de Respuesta SuboSeguro</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Librerías de Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+  <!-- Encabezado institucional -->
+  <header class="header">
+    <h1>PNC GUATEMALA</h1>
+    <h2>SISTEMA DE RESPUESTA SUBOSeguro</h2>
+  </header>
+
+  <div class="container">
+    <!-- Panel izquierdo: mapa -->
+    <div id="map"></div>
+
+    <!-- Panel derecho: consola -->
+    <div class="sidebar">
+      
+      <!-- Emergencia actual -->
+      <div class="card alert-card">
+        <h2>EMERGENCIA EN CURSO</h2>
+        <p><strong>🚨 SOS Detectado</strong></p>
+        <p>Hora: <span id="alert-time">8:37 PM</span></p>
+        <p>Coord: <span id="alert-coord">14.571075, -90.473761</span></p>
+        <button onclick="centerMap()">Centrar Mapa</button>
+        <button onclick="openGoogleMaps()">Ver en Google Maps</button>
+      </div>
+
+      <!-- Unidades registradas -->
+      <div class="card units-card">
+        <h3>Unidades Motorizadas</h3>
+        <ul id="units-list">
+          <li>Tomás - 555-0143 <span class="status disponible">Disponible</span></li>
+          <li>Adrián - 555-0190 <span class="status en-ruta">En ruta</span></li>
+          <li>Samuel - 555-0125 <span class="status incidente">En incidente</span></li>
+        </ul>
+        <button onclick="registerUnit()">Registrar Unidad</button>
+      </div>
+
+      <!-- Historial de notificaciones -->
+      <div class="card history-card">
+        <h3>Historial Reciente (Últimas 5)</h3>
+        <ul id="history-list">
+          <li>8:05 PM - Tomás notificado</li>
+          <li>7:45 PM - Samuel notificado</li>
+          <li>7:30 PM - Adrián notificado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
