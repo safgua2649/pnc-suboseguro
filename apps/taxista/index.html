@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuboSeguro - Taxista</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #1a202c; color: white; text-align: center; }
+    .qr { width: 200px; height: 200px; background: white; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; }
+    .btn { background: #4299e1; border: none; color: white; padding: 12px 24px; margin: 8px; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🚕 TAXISTA</h1>
+  <div class="qr">SUB-GT-A3F8</div>
+  <p>Tu código QR único</p>
+  <button class="btn" onclick="mostrarQR()">Mostrar QR</button>
+  <button class="btn" onclick="activarPanic()">🚨 Emergencia Personal</button>
+
+  <script>
+    function mostrarQR() {
+      alert("Tu QR: SUB-GT-A3F8 — listo para escanear");
+    }
+
+    function activarPanic() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          console.log("Taxista activó emergencia:", { lat, lon });
+          alert("✅ Alerta enviada al PNC a tu empresa");
+        });
+      }
+    }
+  </script>
+</body>
+</html>

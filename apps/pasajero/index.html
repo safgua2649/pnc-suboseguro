@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuboSeguro - Pasajero</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #0a0f1d; color: white; text-align: center; }
+    .btn { background: #e53e3e; border: none; color: white; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; margin: 10px; }
+    .btn:active { transform: scale(0.95); }
+  </style>
+</head>
+<body>
+  <h1>🟢 SUBOSEGURO</h1>
+  <p>Escanea el QR del taxi para activar tu viaje seguro</p>
+  <button class="btn" onclick="activarSOS()">🚨 SOS — EN CASO DE ASALTO</button>
+
+  <script>
+    function activarSOS() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          try {
+            // Simulación: en producción, envía a tu API AWS
+            console.log("Alerta enviada:", { lat, lon });
+            alert("✅ Alerta enviada al PNC y Municipalidad");
+          } catch (e) {
+            alert("⚠️ Error: No se pudo enviar la alerta");
+          }
+        });
+      } else {
+        alert("📍 GPS no disponible");
+      }
+    }
+  </script>
+</body>
+</html>
